@@ -35,7 +35,6 @@ changed_files.zip
 6ammart_store_build_app.sh
 
 # Web related
-lib/generated_plugin_registrant.dart
 
 # Symbolication related
 app.*.symbols
