@@ -3,7 +3,7 @@ import 'package:fasta_deliveries_vendor/util/images.dart';
 
 class AppConstants {
   static const String appName = 'Fasta Deliveries Vendor';
-  static const double appVersion = 3.9; ///Flutter SDK: 3.41.8
+  static const double appVersion = 4.0; ///Flutter SDK: 3.41.8
 
   static const String fontFamily = 'Roboto';
   static const double limitOfPickedVideoSizeInMB = 50;
@@ -275,8 +275,5 @@ class AppConstants {
 
   static List<LanguageModel> languages = [
     LanguageModel(imageUrl: Images.english, languageName: 'English', countryCode: 'US', languageCode: 'en'),
-    LanguageModel(imageUrl: Images.arabic, languageName: 'Arabic', countryCode: 'SA', languageCode: 'ar'),
-    LanguageModel(imageUrl: Images.spanish, languageName: 'Spanish', countryCode: 'ES', languageCode: 'es'),
-    LanguageModel(imageUrl: Images.bangla, languageName: 'Bengali', countryCode: 'BN', languageCode: 'bn'),
   ];
 }
