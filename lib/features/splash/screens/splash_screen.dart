@@ -155,7 +155,7 @@ class SplashScreenState extends State<SplashScreen> {
             Text('suffix_name'.tr, style: robotoMedium, textAlign: TextAlign.center),
             const SizedBox(height: Dimensions.paddingSizeExtraSmall),
             Text(
-              'By Nobo Agencies',
+              'By Blazeworks Cybernetics',
               style: robotoRegular.copyWith(
                 fontSize: Dimensions.fontSizeSmall,
                 color: Theme.of(context).hintColor,
