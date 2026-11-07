@@ -1,0 +1,32 @@
+import 'package:flutter/material.dart';
+import 'package:fasta_deliveries_store/util/styles.dart';
+
+class PriceWidget extends StatelessWidget {
+  final String title;
+  final String value;
+  final double fontSize;
+  const PriceWidget({
+    super.key,
+    required this.title,
+    required this.value,
+    required this.fontSize,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Flexible(
+          child: Text(
+            title,
+            style: robotoRegular.copyWith(fontSize: fontSize),
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+          ),
+        ),
+        Text(value, style: robotoMedium.copyWith(fontSize: fontSize)),
+      ],
+    );
+  }
+}
