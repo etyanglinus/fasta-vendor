@@ -7,6 +7,7 @@ import 'package:fasta_deliveries_store/features/address/domain/models/prediction
 import 'package:fasta_deliveries_store/features/address/domain/models/zone_response_model.dart';
 import 'package:fasta_deliveries_store/features/address/domain/repositories/address_repository_interface.dart';
 import 'package:fasta_deliveries_store/features/address/domain/services/address_service_interface.dart';
+import 'package:fasta_deliveries_store/common/widgets/adaptive_map/adaptive_map.dart';
 
 class AddressService implements AddressServiceInterface {
   final AddressRepositoryInterface addressRepositoryInterface;
@@ -134,7 +135,7 @@ class AddressService implements AddressServiceInterface {
 
   @override
   void handleMapAnimation(
-    GoogleMapController? mapController,
+    AdaptiveMapController? mapController,
     Position myPosition,
   ) {
     if (mapController != null) {

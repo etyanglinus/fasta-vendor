@@ -5,6 +5,7 @@ import 'package:fasta_deliveries_store/features/address/domain/models/prediction
 import 'package:fasta_deliveries_store/features/address/domain/models/zone_model.dart';
 import 'package:fasta_deliveries_store/features/address/domain/models/zone_response_model.dart';
 import 'package:fasta_deliveries_store/features/auth/domain/models/module_model.dart';
+import 'package:fasta_deliveries_store/common/widgets/adaptive_map/adaptive_map.dart';
 
 abstract class AddressServiceInterface {
   Future<List<ZoneModel>?> getZoneList();
@@ -26,7 +27,7 @@ abstract class AddressServiceInterface {
   Future<bool> checkInZone(String? lat, String? lng, int zoneId);
   Future<Position> getPosition(LatLng? defaultLatLng, LatLng configLatLng);
   void handleMapAnimation(
-    GoogleMapController? mapController,
+    AdaptiveMapController? mapController,
     Position myPosition,
   );
 }

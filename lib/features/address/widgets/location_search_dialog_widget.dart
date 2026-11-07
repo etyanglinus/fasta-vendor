@@ -6,9 +6,10 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:fasta_deliveries_store/features/address/controllers/address_controller.dart';
 import 'package:fasta_deliveries_store/features/address/domain/models/prediction_model.dart';
 import 'package:fasta_deliveries_store/util/dimensions.dart';
+import 'package:fasta_deliveries_store/common/widgets/adaptive_map/adaptive_map.dart';
 
 class LocationSearchDialogWidget extends StatelessWidget {
-  final GoogleMapController? mapController;
+  final AdaptiveMapController? mapController;
   const LocationSearchDialogWidget({super.key, required this.mapController});
 
   @override

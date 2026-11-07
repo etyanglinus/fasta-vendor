@@ -12,6 +12,7 @@ import 'package:get/get.dart';
 import 'package:fasta_deliveries_store/features/address/domain/services/address_service_interface.dart';
 import 'package:fasta_deliveries_store/features/splash/controllers/splash_controller.dart';
 import 'package:fasta_deliveries_store/api/api_response.dart';
+import 'package:fasta_deliveries_store/common/widgets/adaptive_map/adaptive_map.dart';
 
 class AddressController extends GetxController implements GetxService {
   final AddressServiceInterface addressServiceInterface;
@@ -177,7 +178,7 @@ class AddressController extends GetxController implements GetxService {
   Future<Position> setSuggestedLocation(
     String? placeID,
     String? address,
-    GoogleMapController? mapController,
+    AdaptiveMapController? mapController,
   ) async {
     _isLoading = true;
     update();
@@ -281,7 +282,7 @@ class AddressController extends GetxController implements GetxService {
   }
 
   Future<AddressModel> getCurrentLocation({
-    GoogleMapController? mapController,
+    AdaptiveMapController? mapController,
     LatLng? defaultLatLng,
     bool notify = true,
   }) async {

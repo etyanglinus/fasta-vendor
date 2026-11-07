@@ -23,10 +23,11 @@ import 'package:fasta_deliveries_store/common/widgets/custom_dropdown_widget.dar
 import 'package:fasta_deliveries_store/common/widgets/custom_snackbar_widget.dart';
 import 'package:fasta_deliveries_store/features/address/widgets/location_search_dialog_widget.dart';
 import 'package:fasta_deliveries_store/features/address/widgets/module_view_widget.dart';
+import 'package:fasta_deliveries_store/common/widgets/adaptive_map/adaptive_map.dart';
 
 class SelectLocationAndModuleViewWidget extends StatefulWidget {
   final bool fromView;
-  final GoogleMapController? mapController;
+  final AdaptiveMapController? mapController;
   final TextEditingController? addressController;
   final FocusNode? addressFocus;
   final List<Widget>? footer;
@@ -48,7 +49,7 @@ class _SelectLocationAndModuleViewWidgetState
     extends State<SelectLocationAndModuleViewWidget> {
   late CameraPosition _cameraPosition;
   Set<Polygon> _polygons = {};
-  GoogleMapController? _mapController;
+  AdaptiveMapController? _mapController;
 
   @override
   Widget build(BuildContext context) {
@@ -242,7 +243,7 @@ class _SelectLocationAndModuleViewWidgetState
                 child: Stack(
                   clipBehavior: Clip.none,
                   children: [
-                    GoogleMap(
+                    AdaptiveMap(
                       initialCameraPosition: CameraPosition(
                         target: LatLng(
                           double.parse(
@@ -285,7 +286,7 @@ class _SelectLocationAndModuleViewWidgetState
                         }
                       },
                       onCameraMove: ((position) => _cameraPosition = position),
-                      onMapCreated: (GoogleMapController controller) {
+                      onMapCreated: (AdaptiveMapController controller) {
                         _mapController = controller;
                         _setPolygon(
                           addressController.zoneList![addressController
