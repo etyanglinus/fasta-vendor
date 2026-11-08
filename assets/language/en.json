@@ -2056,5 +2056,10 @@
   "admin": "Admin",
   "ended": "Ended",
   "not_visible": "Not visible",
-  "please_select_a_variant": "Please select a variant"
+  "please_select_a_variant": "Please select a variant",
+  "delivery_weight": "Delivery weight",
+  "delivery_weight_hint": "Weight of one unit, packed. Leave empty to use the category default. Heavy items get a vehicle that can carry them.",
+  "package_size": "Package size",
+  "category_default": "Category default",
+  "enter_a_valid_delivery_weight": "Enter a valid delivery weight"
 }

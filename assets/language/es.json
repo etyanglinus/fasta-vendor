@@ -2002,5 +2002,10 @@
   "admin": "Administrador",
   "ended": "Finalizado",
   "not_visible": "No visible",
-  "please_select_a_variant": "Selecciona una variante"
+  "please_select_a_variant": "Selecciona una variante",
+  "delivery_weight": "Peso de entrega",
+  "delivery_weight_hint": "Peso de una unidad, empaquetada. Déjalo vacío para usar el valor de la categoría.",
+  "package_size": "Tamaño del paquete",
+  "category_default": "Valor de la categoría",
+  "enter_a_valid_delivery_weight": "Introduce un peso de entrega válido"
 }

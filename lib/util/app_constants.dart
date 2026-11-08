@@ -121,6 +121,7 @@ class AppConstants {
   static const String itemStockUpdateUri = '/api/v1/vendor/item/stock-update';
   static const String addItemUri = '/api/v1/vendor/item/store';
   static const String updateItemUri = '/api/v1/vendor/item/update';
+  static const String itemSizesUri = '/api/v1/vendor/item-sizes';
   static const String deleteItemUri = '/api/v1/vendor/item/delete';
   static const String vendorReviewUri = '/api/v1/vendor/item/reviews';
   static const String itemReviewUri = '/api/v1/items/reviews';

@@ -28,6 +28,8 @@ import 'package:fasta_deliveries_store/features/profile/domain/models/profile_mo
     hide Module;
 import 'package:fasta_deliveries_store/features/splash/controllers/splash_controller.dart';
 import 'package:fasta_deliveries_store/features/store/controllers/store_controller.dart';
+import 'package:fasta_deliveries_store/features/store/controllers/item_cargo_controller.dart';
+import 'package:fasta_deliveries_store/features/store/widgets/item_cargo_section_widget.dart';
 import 'package:fasta_deliveries_store/features/store/domain/models/attribute_model.dart';
 import 'package:fasta_deliveries_store/features/store/domain/models/item_model.dart';
 import 'package:fasta_deliveries_store/features/store/domain/models/variant_type_model.dart';
@@ -250,6 +252,7 @@ class _AddItemScreenState extends State<AddItemScreen>
     _discountController.text = _discountTextForItem(item);
     _stockController.text = item?.stock?.toString() ?? '';
     _maxOrderQuantityController.text = item?.maxOrderQuantity?.toString() ?? '';
+    Get.find<ItemCargoController>().fill(item);
   }
 
   void _setOtherSetupFieldData(Item? item) {
@@ -810,6 +813,11 @@ class _AddItemScreenState extends State<AddItemScreen>
     _item.availableTimeEnds = storeController.availableTimeEnds;
     _item.categoryIds = [];
     _item.maxOrderQuantity = maxOrderQuantity;
+    // Delivery weight and size (optional): pick a vehicle that can carry the order.
+    if (!Get.find<ItemCargoController>().apply(_item)) {
+      showCustomSnackBar('enter_a_valid_delivery_weight'.tr);
+      return;
+    }
     _item.categoryIds!.add(
       CategoryIds(id: categoryController.selectedCategoryID),
     );
@@ -1709,6 +1717,8 @@ class _PriceAndVariationWidget extends StatelessWidget {
                   controller: _maxOrderQuantityController,
                   isNumber: true,
                 ),
+                const SizedBox(height: Dimensions.paddingSizeExtraLarge),
+                const ItemCargoSectionWidget(),
                 SizedBox(
                   height: (module.stock! || module.unit!)
                       ? Dimensions.paddingSizeExtraLarge

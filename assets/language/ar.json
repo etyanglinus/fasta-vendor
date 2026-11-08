@@ -2006,5 +2006,10 @@
   "additional_data": "بيانات إضافية",
   "license_documents": "مستندات الترخيص",
   "min_max_delivery_time": "الحد الأدنى - الأقصى لوقت التوصيل",
-  "please_select_a_variant": "يرجى اختيار خيار"
+  "please_select_a_variant": "يرجى اختيار خيار",
+  "delivery_weight": "وزن التوصيل",
+  "delivery_weight_hint": "وزن الوحدة الواحدة مع التغليف. اتركه فارغًا لاستخدام الوزن الافتراضي للفئة.",
+  "package_size": "حجم الطرد",
+  "category_default": "افتراضي الفئة",
+  "enter_a_valid_delivery_weight": "أدخل وزن توصيل صالحًا"
 }

@@ -264,6 +264,9 @@ class StoreRepository implements StoreRepositoryInterface {
       'translations': jsonEncode(item.translations),
       'tags': tags,
       'maximum_cart_quantity': item.maxOrderQuantity.toString(),
+      // Empty clears the value; the server then uses the category default.
+      'weight': item.weight?.toString() ?? '',
+      'dimension_id': item.dimensionId?.toString() ?? '',
     });
     if (Get.find<ProfileController>()
                 .profileModel!

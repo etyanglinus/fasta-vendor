@@ -2005,5 +2005,10 @@
   "admin": "অ্যাডমিন",
   "ended": "সমাপ্ত",
   "not_visible": "দৃশ্যমান নয়",
-  "please_select_a_variant": "অনুগ্রহ করে একটি ভ্যারিয়েন্ট নির্বাচন করুন"
+  "please_select_a_variant": "অনুগ্রহ করে একটি ভ্যারিয়েন্ট নির্বাচন করুন",
+  "delivery_weight": "ডেলিভারি ওজন",
+  "delivery_weight_hint": "প্যাকেটসহ এক ইউনিটের ওজন। ক্যাটাগরির ডিফল্ট ব্যবহার করতে খালি রাখুন।",
+  "package_size": "প্যাকেজের আকার",
+  "category_default": "ক্যাটাগরির ডিফল্ট",
+  "enter_a_valid_delivery_weight": "সঠিক ডেলিভারি ওজন দিন"
 }

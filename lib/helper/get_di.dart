@@ -146,6 +146,7 @@ import 'package:fasta_deliveries_store/features/splash/domain/repositories/splas
 import 'package:fasta_deliveries_store/features/splash/domain/repositories/splash_repository_interface.dart';
 import 'package:fasta_deliveries_store/features/splash/domain/services/splash_service.dart';
 import 'package:fasta_deliveries_store/features/splash/domain/services/splash_service_interface.dart';
+import 'package:fasta_deliveries_store/features/store/controllers/item_cargo_controller.dart';
 import 'package:fasta_deliveries_store/features/store/controllers/store_controller.dart';
 import 'package:fasta_deliveries_store/features/store/domain/repositories/store_repository.dart';
 import 'package:fasta_deliveries_store/features/store/domain/repositories/store_repository_interface.dart';
@@ -808,6 +809,7 @@ Future<Map<String, Map<String, String>>> init() async {
   Get.lazyPut(() => OrderController(orderServiceInterface: Get.find()));
   Get.lazyPut(() => OrderEditController(orderEditServiceInterface: Get.find()));
   Get.lazyPut(() => StoreController(storeServiceInterface: Get.find()));
+  Get.lazyPut(() => ItemCargoController(), fenix: true);
   Get.lazyPut(() => ServiceController(serviceServiceInterface: Get.find()));
   Get.lazyPut(
     () => ServiceReportController(serviceReportServiceInterface: Get.find()),

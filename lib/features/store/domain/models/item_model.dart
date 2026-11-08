@@ -95,6 +95,10 @@ class Item {
   int? recommendedStatus;
   int? organicStatus;
   int? maxOrderQuantity;
+  // Delivery weight of one unit (business weight unit) and package size: they pick a
+  // vehicle that can carry the order. Null = use the category default.
+  double? weight;
+  int? dimensionId;
   int? itemId;
   int? isPrescriptionRequired;
   int? brandId;
@@ -160,6 +164,8 @@ class Item {
     this.recommendedStatus,
     this.organicStatus,
     this.maxOrderQuantity,
+    this.weight,
+    this.dimensionId,
     this.itemId,
     this.isPrescriptionRequired,
     this.brandId,
@@ -291,6 +297,8 @@ class Item {
     maxOrderQuantity = json['maximum_cart_quantity'] != null
         ? int.parse(json['maximum_cart_quantity'].toString())
         : 0;
+    weight = json['weight'] != null ? double.tryParse(json['weight'].toString()) : null;
+    dimensionId = json['dimension_id'] != null ? int.tryParse(json['dimension_id'].toString()) : null;
     itemId = json['item_id'] != null
         ? int.parse(json['item_id'].toString())
         : null;
@@ -428,6 +436,8 @@ class Item {
     data['recommended'] = recommendedStatus;
     data['organic'] = organicStatus;
     data['maximum_cart_quantity'] = maxOrderQuantity;
+    data['weight'] = weight;
+    data['dimension_id'] = dimensionId;
     data['item_id'] = itemId;
     data['is_prescription_required'] = isPrescriptionRequired;
     data['brand_id'] = brandId;
