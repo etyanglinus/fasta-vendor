@@ -1,3 +1,4 @@
+import 'package:fasta_deliveries_store/features/vat/widgets/vat_notice_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -285,6 +286,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
+                            const VatNoticeWidget(),
                             const SizedBox(height: Dimensions.paddingSizeLarge),
 
                             profileController.modulePermission != null &&

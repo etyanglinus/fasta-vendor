@@ -13,6 +13,7 @@ import 'package:fasta_deliveries_store/features/profile/screens/setting_screen.d
 import 'package:fasta_deliveries_store/features/reports/earinig/screens/earning_report_screen.dart';
 import 'package:fasta_deliveries_store/features/reports/expense/screens/expense_screen.dart';
 import 'package:fasta_deliveries_store/features/reports/screens/reports_screen.dart';
+import 'package:fasta_deliveries_store/features/vat/screens/vat_screen.dart';
 import 'package:fasta_deliveries_store/features/reports/tax/screens/tax_report_screen.dart';
 import 'package:fasta_deliveries_store/features/service_module/service_report/screens/service_reports_screen.dart';
 import 'package:fasta_deliveries_store/features/service_module/service_report/earinig/screens/service_earning_report_screen.dart';
@@ -202,6 +203,7 @@ class RouteHelper {
   static const String lowStock = '/low-stock';
   static const String reports = '/reports';
   static const String taxReport = '/tax-report';
+  static const String taxAndVat = '/tax-and-vat';
   static const String serviceReports = '/service-reports';
   static const String serviceEarningReport = '/service-earning-report';
   static const String serviceExpenseReport = '/service-expense-report';
@@ -507,6 +509,7 @@ class RouteHelper {
   static String getLowStockRoute() => lowStock;
   static String getReportsRoute() => reports;
   static String getTaxReportRoute() => taxReport;
+  static String getTaxAndVatRoute() => taxAndVat;
   static String getServiceReportsRoute() => serviceReports;
   static String getServiceEarningReportRoute() => serviceEarningReport;
   static String getServiceExpenseReportRoute() => serviceExpenseReport;
@@ -1096,6 +1099,7 @@ class RouteHelper {
     GetPage(name: lowStock, page: () => const LowStockScreen()),
     GetPage(name: reports, page: () => const ReportsScreen()),
     GetPage(name: taxReport, page: () => const TaxReportScreen()),
+    GetPage(name: taxAndVat, page: () => const VatScreen()),
     GetPage(name: serviceReports, page: () => const ServiceReportsScreen()),
     GetPage(
       name: serviceEarningReport,
