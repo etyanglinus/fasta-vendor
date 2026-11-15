@@ -224,6 +224,7 @@ class AppConstants {
   static const String vatTaxListUri = '/api/v1/taxvat/get-taxVat-list';
   static const String addonCategoryList = '/api/v1/addon-category/list';
   static const String getTaxReportUri = '/api/v1/vendor/get-tax-report';
+  static const String vendorVatUri = '/api/v1/vendor/vat';
   static const String categoryWiseProducts =
       '/api/v1/vendor/categories/category-wise-products';
   static const String categoryWiseServices =

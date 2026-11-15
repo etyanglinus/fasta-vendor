@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:fasta_deliveries_store/features/auth/controllers/auth_controller.dart';
 import 'package:fasta_deliveries_store/features/auth/domain/models/module_permission_model.dart';
 import 'package:fasta_deliveries_store/features/menu/domain/models/menu_model.dart';
 import 'package:fasta_deliveries_store/features/menu/widgets/menu_button_widget.dart';
@@ -296,6 +297,17 @@ class MenuScreen extends StatelessWidget {
           icon: Images.expense,
           title: 'reports'.tr,
           route: RouteHelper.getReportsRoute(),
+        ),
+      );
+    }
+
+    // Tax & VAT: the owner tells Fasta whether the store is VAT registered with KRA.
+    if (Get.find<AuthController>().getUserType() == 'owner') {
+      menuList.add(
+        MenuModel(
+          icon: Images.taxReportIcon,
+          title: 'tax_and_vat'.tr,
+          route: RouteHelper.getTaxAndVatRoute(),
         ),
       );
     }
