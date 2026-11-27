@@ -29,6 +29,13 @@ class SplashScreenState extends State<SplashScreen> {
   StreamSubscription<List<ConnectivityResult>>? _onConnectivityChanged;
   bool _isRouting = false;
 
+  /// Set when `/config` fails (5xx, timeout, bad body). Without it the vendor
+  /// stares at the logo forever: nothing else on this screen reacts to a failed
+  /// config call, and the connectivity listener only fires on a network change.
+  bool _configFailed = false;
+  int _configAttempts = 0;
+  Timer? _retryTimer;
+
   @override
   void initState() {
     super.initState();
@@ -70,13 +77,31 @@ class SplashScreenState extends State<SplashScreen> {
   @override
   void dispose() {
     _onConnectivityChanged?.cancel();
+    _retryTimer?.cancel();
 
     super.dispose();
+  }
+
+  /// Retries the config call after 2, 4, 8, 16 then every 30 seconds, and lets
+  /// the vendor retry at once from the button.
+  void _onConfigFailed() {
+    if (!mounted) return;
+    _configAttempts++;
+    setState(() => _configFailed = true);
+    _retryTimer?.cancel();
+    final int seconds = _configAttempts >= 5 ? 30 : (1 << _configAttempts);
+    _retryTimer = Timer(Duration(seconds: seconds), _route);
+  }
+
+  void _retryNow() {
+    _retryTimer?.cancel();
+    _route();
   }
 
   void _route() {
     if (_isRouting) return;
     _isRouting = true;
+    if (_configFailed && mounted) setState(() => _configFailed = false);
 
     /// A notification launch routes itself below, so the config call is told not
     /// to navigate. Left to its own devices it runs `Get.offAllNamed(initial)`
@@ -86,8 +111,17 @@ class SplashScreenState extends State<SplashScreen> {
     /// stack something else already replaced.
     Get.find<SplashController>()
         .getConfigData(closeRoute: widget.body != null)
+        .catchError((Object e) {
+          debugPrint('====> Config load threw: $e');
+          return false;
+        })
         .then((isSuccess) async {
           _isRouting = false;
+          if (!isSuccess) {
+            _onConfigFailed();
+            return;
+          }
+          _configAttempts = 0;
           if (isSuccess) {
             Timer(const Duration(seconds: 1), () async {
               double? minimumVersion = _getMinimumVersion();
@@ -325,6 +359,20 @@ class SplashScreenState extends State<SplashScreen> {
                 style: robotoMedium,
                 textAlign: TextAlign.center,
               ),
+              if (_configFailed) ...[
+                const SizedBox(height: Dimensions.paddingSizeLarge),
+                Text(
+                  'couldnt_reach_server'.tr,
+                  style: robotoRegular,
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: Dimensions.paddingSizeSmall),
+                TextButton.icon(
+                  onPressed: _retryNow,
+                  icon: const Icon(Icons.refresh),
+                  label: Text('retry'.tr),
+                ),
+              ],
             ],
           ),
         ),
