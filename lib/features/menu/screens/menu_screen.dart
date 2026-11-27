@@ -333,6 +333,8 @@ class MenuScreen extends StatelessWidget {
       ),
     );
 
+    menuList.add(MenuModel(icon: Images.policy, title: 'help_and_faqs'.tr, route: RouteHelper.cmsFaq));
+    menuList.add(MenuModel(icon: Images.policy, title: 'news_and_updates'.tr, route: RouteHelper.cmsNews));
     menuList.add(
       MenuModel(
         icon: Images.policy,

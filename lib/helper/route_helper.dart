@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:fasta_deliveries_store/features/cms/cms_content.dart';
 import 'package:fasta_deliveries_store/features/addon/screens/add_addon_screen.dart';
 import 'package:fasta_deliveries_store/features/advertisement/screens/advertisement_details_screen.dart';
 import 'package:fasta_deliveries_store/features/advertisement/screens/advertisement_list_screen.dart';
@@ -111,6 +112,8 @@ import 'package:fasta_deliveries_store/features/update/screens/update_screen.dar
 import 'package:get/get.dart';
 
 class RouteHelper {
+  static const String cmsFaq = '/help-faqs';
+  static const String cmsNews = '/news';
   static const String initial = '/';
   static const String splash = '/splash';
   static const String language = '/language';
@@ -545,6 +548,8 @@ class RouteHelper {
   }
 
   static List<GetPage> routes = [
+    GetPage(name: cmsFaq, page: () => const CmsListScreen(type: 'faq')),
+    GetPage(name: cmsNews, page: () => const CmsListScreen(type: 'news')),
     GetPage(name: initial, page: () => const DashboardScreen(pageIndex: 0)),
     GetPage(
       name: splash,
