@@ -2037,5 +2037,8 @@
   "vat_status_rejected": "Not accepted",
   "vat_rule_starts_short": "From @date VAT is only added for sellers whose KRA VAT registration Fasta has checked. Tap to tell us whether you are VAT registered.",
   "vat_not_added_action": "VAT is not being added to your sales because your KRA VAT registration has not been checked. Tap to update your tax details.",
-  "couldnt_reach_server": "We couldn't reach Fasta right now. We'll keep trying."
+  "help_and_faqs": "Help & FAQs",
+  "news_and_updates": "News & updates",
+  "nothing_here_yet": "Nothing here yet.",
+  "dismiss": "Dismiss"
 }
