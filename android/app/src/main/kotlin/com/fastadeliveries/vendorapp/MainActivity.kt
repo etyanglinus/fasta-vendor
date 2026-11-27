@@ -1,4 +1,4 @@
-package com.sixamtech.fasta_deliveries_store_app
+package com.fastadeliveries.vendorapp
 
 import io.flutter.embedding.android.FlutterActivity
 

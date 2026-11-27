@@ -18,6 +18,7 @@ import 'package:fasta_deliveries_store/features/rental_module/home/screens/taxi_
 import 'package:fasta_deliveries_store/features/rental_module/menu/screens/taxi_menu_screen.dart';
 import 'package:fasta_deliveries_store/features/rental_module/provider/screens/provider_screen.dart';
 import 'package:fasta_deliveries_store/features/rental_module/trips/screens/trip_history_screen.dart';
+import 'package:fasta_deliveries_store/features/buycar/buycar_seller_screen.dart';
 import 'package:fasta_deliveries_store/features/store/screens/store_screen.dart';
 import 'package:fasta_deliveries_store/features/subscription/controllers/subscription_controller.dart';
 import 'package:fasta_deliveries_store/features/service_module/home/screens/service_home_screen.dart';
@@ -57,7 +58,9 @@ class DashboardScreenState extends State<DashboardScreen> {
       _homeScreen(moduleType),
       _orderScreen(moduleType),
       _storeScreen(moduleType),
-      const WalletScreen(),
+      moduleType == 'buycar'
+          ? const BuyCarSellerScreen(section: 'plans')
+          : const WalletScreen(),
       Container(),
     ];
 
@@ -84,6 +87,8 @@ class DashboardScreenState extends State<DashboardScreen> {
     switch (moduleType) {
       case 'rental':
         return const TaxiHomeScreen();
+      case 'buycar':
+        return const BuyCarSellerScreen(section: 'overview');
       case AppConstants.service:
         return const ServiceHomeScreen();
       default:
@@ -95,6 +100,8 @@ class DashboardScreenState extends State<DashboardScreen> {
     switch (moduleType) {
       case 'rental':
         return const TripHistoryScreen();
+      case 'buycar':
+        return const BuyCarSellerScreen(section: 'activity');
       case AppConstants.service:
         return const ServiceOrderHistoryScreen();
       default:
@@ -106,6 +113,8 @@ class DashboardScreenState extends State<DashboardScreen> {
     switch (moduleType) {
       case 'rental':
         return const ProviderScreen();
+      case 'buycar':
+        return const BuyCarSellerScreen(section: 'cars');
       case AppConstants.service:
         return const ServiceStoreScreen();
       default:
@@ -117,6 +126,8 @@ class DashboardScreenState extends State<DashboardScreen> {
     switch (moduleType) {
       case 'rental':
         return const TaxiMenuScreen();
+      case 'buycar':
+        return const BuyCarSellerScreen(section: 'overview');
       case AppConstants.service:
         return const ServiceMenuScreen();
       default:
@@ -219,8 +230,12 @@ class DashboardScreenState extends State<DashboardScreen> {
                                   _setPage(2);
                                 },
                           child: Image.asset(
-                            Get.find<AuthController>().getModuleType() ==
-                                    'rental'
+                            [
+                              'rental',
+                              'buycar',
+                            ].contains(
+                              Get.find<AuthController>().getModuleType(),
+                            )
                                 ? Images.taxiHome
                                 : Images.restaurant,
                             height: 20,
@@ -277,6 +292,10 @@ class DashboardScreenState extends State<DashboardScreen> {
                                             .getModuleType() ==
                                         'service'
                                   ? 'bookings'.tr
+                                  : Get.find<AuthController>()
+                                            .getModuleType() ==
+                                        'buycar'
+                                  ? 'Buyer activity'
                                   : 'orders'.tr,
                               selectedIcon: Images.orderSelect,
                               unSelectedIcon: Images.orderUnselect,
@@ -290,7 +309,11 @@ class DashboardScreenState extends State<DashboardScreen> {
                             ),
                             const Expanded(child: SizedBox()),
                             BottomNavItemWidget(
-                              title: 'wallet'.tr,
+                              title:
+                                  Get.find<AuthController>().getModuleType() ==
+                                          'buycar'
+                                      ? 'Plans'
+                                      : 'wallet'.tr,
                               selectedIcon: Images.walletSelect,
                               unSelectedIcon: Images.walletUnSelect,
                               isSelected: _pageIndex == 3,

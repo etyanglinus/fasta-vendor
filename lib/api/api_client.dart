@@ -218,7 +218,7 @@ class ApiClient extends GetxService {
       statusCode: response.statusCode,
       statusText: response.reasonPhrase,
     );
-    if (response0.isSuccessful) {
+    if (response0.isOk) {
       if (response0.statusCode != 200) {
         response0 = Response(
           body: response0.body,

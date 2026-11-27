@@ -15,7 +15,7 @@ if (keystorePropertiesFile.exists()) {
 }
 
 android {
-    namespace = "com.sixamtech.fasta_deliveries_store_app"
+    namespace = "com.fastadeliveries.vendorapp"
     compileSdk = 36
     ndkVersion = flutter.ndkVersion
 
@@ -30,7 +30,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.sixamtech.fasta_deliveries_store_app"
+        applicationId = "com.fastadeliveries.vendorapp"
         minSdk = flutter.minSdkVersion
         targetSdk = 36
         versionCode = flutter.versionCode
