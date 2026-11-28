@@ -368,6 +368,16 @@ class AuthController extends GetxController implements GetxService {
     update();
   }
 
+  /// Car sellers (BuyCar module) pay by subscription only, on their own plans: the
+  /// commission option is hidden for them and the choice moves to subscription.
+  static bool isCarSellerModule(String? moduleType) => moduleType == 'buycar';
+
+  void onModuleChosen(String? moduleType) {
+    if (isCarSellerModule(moduleType) && _businessIndex != 1) {
+      setBusiness(1);
+    }
+  }
+
   void setBusinessStatus(String status) {
     _businessPlanStatus = status;
     update();
