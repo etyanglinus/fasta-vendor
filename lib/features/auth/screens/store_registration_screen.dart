@@ -43,6 +43,14 @@ class StoreRegistrationScreen extends StatefulWidget {
 
 class _StoreRegistrationScreenState extends State<StoreRegistrationScreen>
     with TickerProviderStateMixin {
+  /// The module picked in this form is a BuyCar (car seller) module.
+  bool _isCarSeller(AddressController addressController) {
+    final index = addressController.selectedModuleIndex;
+    final modules = addressController.moduleList;
+    return index != null && index >= 0 && modules != null && index < modules.length &&
+        AuthController.isCarSellerModule(modules[index].moduleType);
+  }
+
   final List<TextEditingController> _nameController = [];
   final List<TextEditingController> _addressController = [];
   //final TextEditingController _vatController = TextEditingController();
@@ -1463,9 +1471,12 @@ class _StoreRegistrationScreenState extends State<StoreRegistrationScreen>
                                     child: Row(
                                       children: [
                                         Get.find<SplashController>()
-                                                    .configModel!
-                                                    .commissionBusinessModel !=
-                                                0
+                                                        .configModel!
+                                                        .commissionBusinessModel !=
+                                                    0 &&
+                                                !_isCarSeller(
+                                                  Get.find<AddressController>(),
+                                                )
                                             ? Expanded(
                                                 child: BaseCardWidget(
                                                   authController:
@@ -1482,9 +1493,12 @@ class _StoreRegistrationScreenState extends State<StoreRegistrationScreen>
                                         ),
 
                                         Get.find<SplashController>()
-                                                    .configModel!
-                                                    .subscriptionBusinessModel !=
-                                                0
+                                                        .configModel!
+                                                        .subscriptionBusinessModel !=
+                                                    0 ||
+                                                _isCarSeller(
+                                                  Get.find<AddressController>(),
+                                                )
                                             ? Expanded(
                                                 child: BaseCardWidget(
                                                   authController:
@@ -1874,7 +1888,8 @@ class _StoreRegistrationScreenState extends State<StoreRegistrationScreen>
                                           .deliveryTimeTypeList[authController
                                           .deliveryTimeTypeIndex],
                                   businessPlan:
-                                      authController.businessIndex == 0
+                                      authController.businessIndex == 0 &&
+                                          !_isCarSeller(addressController)
                                       ? 'commission'
                                       : 'subscription',
                                   packageId:

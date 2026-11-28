@@ -58,8 +58,11 @@ class ModuleViewWidget extends StatelessWidget {
                     child: CustomDropdown<int>(
                       onChange: (int? value, int index) {
                         addressController.selectModuleIndex(value);
+                        Get.find<AuthController>().onModuleChosen(
+                          addressController.moduleList![value!].moduleType,
+                        );
                         Get.find<AuthController>().getPackageList(
-                          moduleId: addressController.moduleList![value!].id,
+                          moduleId: addressController.moduleList![value].id,
                         );
                       },
                       dropdownButtonStyle: DropdownButtonStyle(
